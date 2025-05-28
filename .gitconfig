@@ -1,0 +1,19 @@
+[user]
+	name = Charles Haynes
+	email = haynescd@chop.edu
+[alias]
+    co = checkout
+    cm = commit -m
+    rv = remote -v
+    st = status -sb
+    ll = log --oneline
+    last = log -1 HEAD --stat
+[push]
+	autoSetupRemote = true
+[core]
+	autocrlf = input
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
