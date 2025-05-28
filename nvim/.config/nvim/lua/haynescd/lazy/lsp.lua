@@ -43,7 +43,7 @@ return {
                 }
             })
 
-            vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ts_ls' })
+            vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ts_ls', 'terraformls' })
 
             --vim.lsp.set_log_level('debug')
 
