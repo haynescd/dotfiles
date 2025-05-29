@@ -45,9 +45,12 @@ return {
             vim.lsp.config('jdtls', {
                 settings = {
                     java = {
+                        maven = {
+                            downloadSources = true,
+                        },
                         import = {
                             maven = {
-                                enabled = true
+                                enabled = true,
                             },
                             exclusions = {
                                 "**/node_modules/**",
