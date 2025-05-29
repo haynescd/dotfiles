@@ -42,6 +42,43 @@ return {
                     }
                 }
             })
+            vim.lsp.config('jdtls', {
+                settings = {
+                    java = {
+                        import = {
+                            maven = {
+                                enabled = true
+                            },
+                            exclusions = {
+                                "**/node_modules/**",
+                                "**/.metadata/**",
+                                "**/archetype-resources/**",
+                                "**/META-INF/maven/**",
+                                "/**/test/**"
+                            }
+                        },
+                        referencesCodeLens = {
+                            enabled = true
+                        },
+                        signatureHelp = {
+                            enabled = true
+                        },
+                        implementationsCodeLens = {
+                            enabled = true
+                        },
+                        format = {
+                            enabled = true
+                        },
+                        saveActions = {
+                            organizeImports = true
+                        },
+                        autobuild = {
+                            enabled = true
+                        },
+                    },
+                }
+
+            })
 
             vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ts_ls', 'terraformls', 'jdtls' })
 
@@ -65,18 +102,17 @@ return {
 
 
                     client.offset_encoding = "utf-16"
-
                     vim.keymap.set("n", "<leader>dy", vim.diagnostic.setloclist,
                         { desc = "Yank diagnostic list for current buffer" })
 
                     ---- Find references for the word under your cursor.
-                    --vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
-                    --    { buffer = 0, desc = 'LSP: [G]oto [R]eferences' })
+                    vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references,
+                        { buffer = 0, desc = 'LSP: [G]oto [R]eferences' })
 
                     ---- Jump to the implementation of the word under your cursor.
                     ----  Useful when your language has ways of declaring types without an actual implementation.
-                    --vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations,
-                    --    { buffer = 0, desc = 'LSP: [G]oto [I]mplementation' })
+                    vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations,
+                        { buffer = 0, desc = 'LSP: [G]oto [I]mplementation' })
 
                     ---- Jump to the definition of the word under your cursor.
                     ----  This is where a variable was first declared, or where a function is defined, etc.
@@ -86,14 +122,10 @@ return {
 
                     ---- Fuzzy find all the symbols in your current document.
                     ----  Symbols are things like variables, functions, types, etc.
-                    vim.keymap.set('n', '<leader>gw', require('telescope.builtin').lsp_document_symbols,
+                    vim.keymap.set('n', '<leader>wd', require('telescope.builtin').lsp_document_symbols,
                         { buffer = 0, desc = 'LSP: Open Document Symbols' })
 
-                    ---- Jump to the type of the word under your cursor.
-                    ----  Useful when you're not sure what type a variable is and you want to see
-                    ----  the definition of its *type*, not where it was *defined*.
-                    --vim.keymap.set('n', 'gT', vim.lsp.buf.lsp_type_definitions,
-                    --    { buffer = 0, desc = 'LSP: [G]oto [T]ype Definition' })
+
 
                     -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
                     if client:supports_method('textDocument/completion') then
