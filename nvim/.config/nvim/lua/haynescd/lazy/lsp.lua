@@ -18,11 +18,22 @@ return {
         config = function(_, opts)
             local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-            capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+            capabilities = vim.tbl_deep_extend('force', capabilities,
+                require('blink.cmp').get_lsp_capabilities({}, false))
 
-            capabilities.textDocument.semanticTokens.multilineTokenSupport = true
+            capabilities = vim.tbl_deep_extend('force', capabilities, {
 
-            capabilities.textDocument.completion.completionItem.snippetSupport = true
+                textDocument = {
+                    sematicTokens = {
+                        multiLineTokenSupport = true
+                    },
+                    completion = {
+                        completionItem = {
+                            snippetSupport = true
+                        }
+                    }
+                }
+            })
 
             vim.lsp.config('*', {
                 capabilities = capabilities,
@@ -83,7 +94,7 @@ return {
 
             })
 
-            vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ts_ls', 'terraformls', 'jdtls' })
+            vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ts_ls', 'terraformls', 'jdtls', 'gopls' })
 
             --vim.lsp.set_log_level('debug')
 
@@ -107,6 +118,7 @@ return {
                     client.offset_encoding = "utf-16"
                     vim.keymap.set("n", "<leader>dy", vim.diagnostic.setloclist,
                         { desc = "Yank diagnostic list for current buffer" })
+
 
                     ---- Find references for the word under your cursor.
                     vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references,
