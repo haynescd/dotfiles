@@ -18,8 +18,10 @@ return {
         config = function(_, opts)
             local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-            capabilities = vim.tbl_deep_extend('force', capabilities,
+            if not vim.g.vscode then
+                capabilities = vim.tbl_deep_extend('force', capabilities,
                 require('blink.cmp').get_lsp_capabilities({}, false))
+            end
 
             capabilities = vim.tbl_deep_extend('force', capabilities, {
 
