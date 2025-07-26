@@ -96,7 +96,7 @@ return {
 
             })
 
-            vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ts_ls', 'terraformls', 'jdtls', 'gopls' })
+            vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ts_ls', 'terraformls', 'jdtls', 'gopls', 'rust_analyzer'})
 
             --vim.lsp.set_log_level('debug')
 
@@ -117,7 +117,7 @@ return {
                     if not client then return end
 
 
-                    client.offset_encoding = "utf-16"
+                    --client.offset_encoding = "utf-8"
                     vim.keymap.set("n", "<leader>dy", vim.diagnostic.setloclist,
                         { desc = "Yank diagnostic list for current buffer" })
 
