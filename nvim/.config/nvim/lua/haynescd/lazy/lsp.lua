@@ -14,13 +14,14 @@ return {
                 },
             },
             { 'saghen/blink.cmp' },
+            { 'mfussenegger/nvim-jdtls' },
         },
         config = function(_, opts)
             local capabilities = vim.lsp.protocol.make_client_capabilities()
 
             if not vim.g.vscode then
                 capabilities = vim.tbl_deep_extend('force', capabilities,
-                require('blink.cmp').get_lsp_capabilities({}, false))
+                    require('blink.cmp').get_lsp_capabilities({}, false))
             end
 
             capabilities = vim.tbl_deep_extend('force', capabilities, {
@@ -112,6 +113,7 @@ return {
             end, { desc = "Toggle lsp lines" })
 
             vim.api.nvim_create_autocmd('LspAttach', {
+                group = vim.api.nvim_create_augroup('my.lsp', {}),
                 callback = function(args)
                     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
                     if not client then return end
@@ -158,6 +160,7 @@ return {
                     if not client:supports_method('textDocument/willSaveWaitUntil')
                         and client:supports_method('textDocument/formatting') then
                         vim.api.nvim_create_autocmd('BufWritePre', {
+                            group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
                             buffer = args.buf,
                             callback = function()
                                 print(client.name)
