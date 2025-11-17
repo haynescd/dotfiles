@@ -41,7 +41,13 @@ return {
             vim.lsp.config('*', {
                 capabilities = capabilities,
             })
-
+            vim.lsp.config('ruff', {
+                --init_options = {
+                --    settings = {
+                --        -- Ruff language server settings go here
+                --    }
+                --}
+            })
             vim.lsp.config('basedpyright', {
                 settings = {
                     basedpyright = {
@@ -53,7 +59,14 @@ return {
                                 callArgumentNames = true
                             }
                         }
-                    }
+                    },
+                    python = {
+                        analysis = {
+                            -- Ignore all files for analysis to exclusively use Ruff for linting
+                            ignore = { '*' },
+                        },
+                    },
+
                 }
             })
             vim.lsp.config('jdtls', {
@@ -97,7 +110,7 @@ return {
 
             })
 
-            vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ts_ls', 'terraformls', 'jdtls', 'gopls', 'rust_analyzer'})
+            vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ruff', 'ts_ls', 'terraformls', 'jdtls', 'gopls', 'rust_analyzer' })
 
             --vim.lsp.set_log_level('debug')
 
