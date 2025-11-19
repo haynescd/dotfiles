@@ -42,11 +42,12 @@ return {
                 capabilities = capabilities,
             })
             vim.lsp.config('ruff', {
-                --init_options = {
-                --    settings = {
-                --        -- Ruff language server settings go here
-                --    }
-                --}
+                init_options = {
+                    settings = {
+                        lineLength = 80,
+                        -- Ruff language server settings go here
+                    }
+                }
             })
             vim.lsp.config('basedpyright', {
                 settings = {
