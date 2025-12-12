@@ -1,4 +1,4 @@
 return {
     -- disable neo-tree
-    { "nvim-neo-tree/neo-tree.nvim", enable = false }
+    { "nvim-neo-tree/neo-tree.nvim", enabled = false }
 }
