@@ -7,7 +7,5 @@ vim.keymap.set("n", "<A-k>", "<CMD>cprev<CR>", { desc = "Queue List Prev" })
 
 -- Toggle Inlay Hints
 vim.keymap.set("n", "<leader>tt", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-  end,
-  { desc = "Toggle Inlay hints" }
-)
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle Inlay hints" })
