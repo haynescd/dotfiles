@@ -38,6 +38,46 @@ return {
             },
           },
         },
+        terraformls = {},
+        jdtls = {
+          settings = {
+            java = {
+              maven = {
+                downloadSources = true,
+              },
+              import = {
+                maven = {
+                  enabled = true,
+                },
+                exclusions = {
+                  "**/node_modules/**",
+                  "**/.metadata/**",
+                  "**/archetype-resources/**",
+                  "**/META-INF/maven/**",
+                  "/**/test/**",
+                },
+              },
+              referencesCodeLens = {
+                enabled = true,
+              },
+              signatureHelp = {
+                enabled = true,
+              },
+              implementationsCodeLens = {
+                enabled = true,
+              },
+              format = {
+                enabled = true,
+              },
+              saveActions = {
+                organizeImports = true,
+              },
+              autobuild = {
+                enabled = true,
+              },
+            },
+          },
+        },
       },
     },
   },
