@@ -12,20 +12,15 @@ return {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         basedpyright = {
           settings = {
-            pyright = {
+            basedpyright = {
               disableOrganizeImports = true,
               anaylsis = {
                 autoImportCompletions = true,
-
                 inlayHints = {
                   callArgumentNames = true,
                 },
-              },
-            },
-            python = {
-              analysis = {
-                -- Ignore all files for analysis to exclusively use Ruff for linting
                 ignore = { "*" },
+                typeCheckingMode = "basic",
               },
             },
           },
@@ -79,6 +74,24 @@ return {
           },
         },
       },
+    },
+    -- you can do any additional lsp server setup here
+    -- return true if you don't want this server to be setup with lspconfig
+    ---@type table<string, fun(server:string, opts: vim.lsp.Config):boolean?>
+    setup = {
+      ruff = function()
+        Snacks.util.lsp.on({ name = "ruff" }, function(_, client)
+          -- Disable hover in favor of Pyright
+          client.server_capabilities.hoverProvider = false
+        end)
+      end,
+      -- example to setup with typescript.nvim
+      -- tsserver = function(_, opts)
+      --   require("typescript").setup({ server = opts })
+      --   return true
+      -- end,
+      -- Specify * to use this function as a fallback for any server
+      -- ["*"] = function(server, opts) end,
     },
   },
 }
