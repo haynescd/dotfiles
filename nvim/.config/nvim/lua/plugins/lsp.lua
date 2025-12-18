@@ -1,6 +1,7 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        event = "VeryLazy",
         dependencies = {
             {
                 "folke/lazydev.nvim",
@@ -14,29 +15,13 @@ return {
                 },
             },
             { "saghen/blink.cmp" },
-            { "mfussenegger/nvim-jdtls",       lazy = true },
+            { "mfussenegger/nvim-jdtls", lazy = true },
             { "mason-org/mason.nvim" },
             { "mason-org/mason-lspconfig.nvim" },
         },
         config = function(_, opts)
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-            capabilities =
-                vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
-
-            capabilities = vim.tbl_deep_extend("force", capabilities, {
-
-                textDocument = {
-                    sematicTokens = {
-                        multiLineTokenSupport = true,
-                    },
-                    completion = {
-                        completionItem = {
-                            snippetSupport = true,
-                        },
-                    },
-                },
-            })
             require("mason").setup()
             require("mason-lspconfig").setup({
                 automatic_enable = true,
@@ -64,9 +49,8 @@ return {
             vim.lsp.config("basedpyright", {
                 settings = {
                     basedpyright = {
-                        anaylsis = {
+                        analysis = {
                             autoImportCompletions = true,
-
                             inlayHints = {
                                 callArgumentNames = true,
                             },
@@ -114,17 +98,6 @@ return {
                 },
             })
 
-            vim.lsp.enable({
-                "lua_ls",
-                "basedpyright",
-                "ruff",
-                "ts_ls",
-                "terraformls",
-                "jdtls",
-                "gopls",
-                "rust_analyzer",
-            })
-
             --vim.lsp.set_log_level('debug')
 
             vim.diagnostic.config({ virtual_text = true })
@@ -146,7 +119,7 @@ return {
                         return
                     end
 
-                    if client.name == 'ruff' then
+                    if client.name == "ruff" then
                         -- Disable hover in favor of basedpyright
                         client.server_capabilities.hoverProvider = false
                     end
@@ -211,7 +184,7 @@ return {
                         and client:supports_method("textDocument/formatting")
                     then
                         vim.api.nvim_create_autocmd("BufWritePre", {
-                            group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
+                            group = vim.api.nvim_create_augroup("format-on-save", { clear = false }),
                             buffer = args.buf,
                             callback = function()
                                 print(client.name)

@@ -25,11 +25,11 @@ return {
     --},
     {
         "catppuccin/nvim",
-        --lazy = true,
         name = "catppuccin",
+        lazy = false,
         priority = 1000,
         config = function()
-            require('catppuccin').setup({
+            require("catppuccin").setup({
                 flavour = "macchiato",
                 transparent_background = true,
                 no_underline = true,
@@ -39,7 +39,8 @@ return {
                     percentage = 0.15, -- percentage of the shade to apply to the inactive window
                 },
             })
-            ColorMyPencils('catppuccin');
+            ColorMyPencils("catppuccin")
+            require("plugin.after.transparency")
         end,
         integrations = {
             aerial = true,
@@ -59,14 +60,11 @@ return {
             mini = true,
             navic = { enabled = true, custom_bg = "lualine" },
             neotest = true,
-            neotree = true,
             noice = true,
             notify = true,
-            snacks = true,
             telescope = true,
             treesitter_context = true,
             which_key = true,
         },
-    }
-
+    },
 }
