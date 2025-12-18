@@ -38,7 +38,7 @@ return {
         vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find)
         vim.keymap.set("n", "<leader>fh", builtin.help_tags)
         vim.keymap.set("n", "<leader>gw", builtin.grep_string)
-        vim.keymap.set("n", "<leader>gl", builtin.live_grep)
+        vim.keymap.set("n", "<leader>gs", builtin.live_grep)
 
         vim.keymap.set("n", "<leader>en", function()
             require("telescope.builtin").find_files({

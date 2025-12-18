@@ -3,5 +3,13 @@
 -- Add any additional keymaps here
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+
 vim.keymap.set("n", "<A-j>", "<CMD>cnext<CR>", { desc = "Queue List Next" })
 vim.keymap.set("n", "<A-k>", "<CMD>cprev<CR>", { desc = "Queue List Prev" })
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
+
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])

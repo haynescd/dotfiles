@@ -64,19 +64,12 @@ return {
             vim.lsp.config("basedpyright", {
                 settings = {
                     basedpyright = {
-                        disableOrganizeImports = true,
                         anaylsis = {
                             autoImportCompletions = true,
 
                             inlayHints = {
                                 callArgumentNames = true,
                             },
-                        },
-                    },
-                    python = {
-                        analysis = {
-                            -- Ignore all files for analysis to exclusively use Ruff for linting
-                            ignore = { "*" },
                         },
                     },
                 },
@@ -151,6 +144,11 @@ return {
                     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
                     if not client then
                         return
+                    end
+
+                    if client.name == 'ruff' then
+                        -- Disable hover in favor of basedpyright
+                        client.server_capabilities.hoverProvider = false
                     end
 
                     --client.offset_encoding = "utf-8"
