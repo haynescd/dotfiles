@@ -20,7 +20,8 @@ return {
             { "mason-org/mason-lspconfig.nvim" },
         },
         config = function(_, opts)
-            local capabilities = require("blink.cmp").get_lsp_capabilities()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
             require("mason").setup()
             require("mason-lspconfig").setup({
