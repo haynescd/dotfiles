@@ -24,17 +24,6 @@ function transparency()
     vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
     vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none" })
 
-    -- transparent background for neotree
-    vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeVertSplit", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { bg = "none" })
-
-    -- transparent background for nvim-tree
-    vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NvimTreeVertSplit", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "none" })
 
     -- transparent notify background
     vim.api.nvim_set_hl(0, "NotifyINFOBody", { bg = "none" })
@@ -82,7 +71,7 @@ return {
                 transparent_background = true,
                 no_underline = true,
                 dim_inactive = {
-                    enabled = true, -- dims the background color of inactive window
+                    enabled = true,    -- dims the background color of inactive window
                     shade = "dark",
                     percentage = 0.15, -- percentage of the shade to apply to the inactive window
                 },
@@ -90,29 +79,5 @@ return {
             ColorMyPencils("catppuccin")
             transparency()
         end,
-        integrations = {
-            aerial = true,
-            alpha = true,
-            cmp = true,
-            dashboard = true,
-            flash = true,
-            fzf = true,
-            grug_far = true,
-            gitsigns = true,
-            headlines = true,
-            illuminate = true,
-            indent_blankline = { enabled = true },
-            leap = true,
-            lsp_trouble = true,
-            mason = true,
-            mini = true,
-            navic = { enabled = true, custom_bg = "lualine" },
-            neotest = true,
-            noice = true,
-            notify = true,
-            telescope = true,
-            treesitter_context = true,
-            which_key = true,
-        },
     },
 }
