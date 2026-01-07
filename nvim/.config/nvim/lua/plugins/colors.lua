@@ -24,7 +24,6 @@ function transparency()
     vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
     vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none" })
 
-
     -- transparent notify background
     vim.api.nvim_set_hl(0, "NotifyINFOBody", { bg = "none" })
     vim.api.nvim_set_hl(0, "NotifyERRORBody", { bg = "none" })
@@ -43,41 +42,42 @@ function transparency()
     vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { bg = "none" })
 end
 
--- lua/plugins/rose-pine.lua
 return {
-    --{
-    --    "rose-pine/neovim",
-    --    name = "rose-pine",
-    --    config = function()
-    --        require('rose-pine').setup({
-    --            variant = "moon",
-    --            dark_variant = "moon",
-    --            disable_background = true,
-    --            styles = {
-    --                italic = true,
-    --            },
-    --        })
-    --        ColorMyPencils();
-    --    end
-    --},
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "rose-pine/neovim",
+        name = "rose-pine",
         lazy = false,
         priority = 1000,
         config = function()
-            require("catppuccin").setup({
-                flavour = "macchiato",
-                transparent_background = true,
-                no_underline = true,
-                dim_inactive = {
-                    enabled = true,    -- dims the background color of inactive window
-                    shade = "dark",
-                    percentage = 0.15, -- percentage of the shade to apply to the inactive window
+            require("rose-pine").setup({
+                variant = "moon",
+                dark_variant = "moon",
+                disable_background = true,
+                styles = {
+                    italic = false,
                 },
             })
-            ColorMyPencils("catppuccin")
-            transparency()
+            ColorMyPencils("rose-pine")
         end,
     },
+    --{
+    --    "catppuccin/nvim",
+    --    name = "catppuccin",
+    --    lazy = false,
+    --    priority = 1000,
+    --    config = function()
+    --        require("catppuccin").setup({
+    --            flavour = "macchiato",
+    --            transparent_background = true,
+    --            no_underline = true,
+    --            dim_inactive = {
+    --                enabled = true,    -- dims the background color of inactive window
+    --                shade = "dark",
+    --                percentage = 0.15, -- percentage of the shade to apply to the inactive window
+    --            },
+    --        })
+    --        ColorMyPencils("catppuccin")
+    --        transparency()
+    --    end,
+    --},
 }

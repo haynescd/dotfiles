@@ -15,7 +15,7 @@ return {
                 },
             },
             { "saghen/blink.cmp" },
-            { "mfussenegger/nvim-jdtls", lazy = true },
+            { "mfussenegger/nvim-jdtls",       lazy = true },
             { "mason-org/mason.nvim" },
             { "mason-org/mason-lspconfig.nvim" },
         },
@@ -101,16 +101,21 @@ return {
 
             --vim.lsp.set_log_level('debug')
 
-            vim.diagnostic.config({ virtual_text = true })
-
+            vim.diagnostic.config({
+                virtual_text = false,
+                underline = false,
+                float = {
+                    focusable = false,
+                    style = "minimal",
+                    border = "rounded",
+                    source = true,
+                    header = "",
+                    prefix = "",
+                },
+            })
             vim.keymap.set("n", "<leader>dt", function()
-                local config = vim.diagnostic.config() or {}
-                if config.virtual_text then
-                    vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
-                else
-                    vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
-                end
-            end, { desc = "Toggle lsp lines" })
+                vim.diagnostic.open_float(nil, { focus = false })
+            end, { desc = "Toggle Diagnostic Float" })
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("my.lsp", {}),
