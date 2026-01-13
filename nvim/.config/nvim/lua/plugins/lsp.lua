@@ -104,6 +104,7 @@ return {
             vim.diagnostic.config({
                 virtual_text = false,
                 underline = false,
+                severity_sort = true,
                 float = {
                     focusable = false,
                     style = "minimal",
