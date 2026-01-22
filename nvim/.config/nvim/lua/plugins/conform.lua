@@ -21,10 +21,13 @@ return {
                 terraform = { "terraform_fmt" },
                 lua = { "stylua" },
             },
-            format_on_save = { timeout_ms = 500 },
+            format_on_save = {
+                timeout_ms = 500,
+                lsp_format = "fallback",
+            },
             formatters = {
                 ruff_format = {
-                    append_args = { "--line-length", 80 },
+                    append_args = { "--line-length", 100 },
                 },
             },
         },
