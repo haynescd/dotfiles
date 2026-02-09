@@ -1,6 +1,7 @@
 function ColorMyPencils(color)
     color = color or "rose-pine"
     vim.cmd.colorscheme(color)
+    transparency()
 
     --vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     --vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -45,14 +46,12 @@ end
 return {
     {
         "rose-pine/neovim",
-        name = "rose-pine",
-        lazy = false,
         priority = 1000,
         config = function()
             require("rose-pine").setup({
                 variant = "moon",
                 dark_variant = "moon",
-                disable_background = true,
+                --disable_background = true,
                 styles = {
                     italic = false,
                 },

@@ -23,3 +23,16 @@ vim.keymap.set("n", "<leader>cb", function()
         end
     end
 end, { desc = "Clear all other Buffers" })
+
+-- [[ Basic Keymaps ]]
+--  See `:help vim.keymap.set()`
+
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+
+
+vim.keymap.set("n", "<leader>dt", function()
+    vim.diagnostic.open_float(nil, { focus = false })
+end, { desc = "Toggle Diagnostic Float" })
