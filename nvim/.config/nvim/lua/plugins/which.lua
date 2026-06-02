@@ -1,7 +1,7 @@
 return {
     {
         "folke/which-key.nvim",
-        event = 'VimEnter',
+        event = "VimEnter",
         opts = {
             -- delay between pressing a key and opening which-key (milliseconds)
             delay = 0,
@@ -9,9 +9,9 @@ return {
 
             -- Document existing key chains
             spec = {
-                { '<leader>s', group = '[S]earch',   mode = { 'n', 'v' } },
-                { '<leader>t', group = '[T]oggle' },
-                { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+                { "<leader>s", group = "[S]earch", mode = { "n", "v" } },
+                { "<leader>t", group = "[T]est", mode = { "n" } },
+                { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
             },
         },
 

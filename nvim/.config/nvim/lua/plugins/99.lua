@@ -20,7 +20,6 @@ return {
                 --- What autocomplete do you use.  We currently only
                 --- support cmp right now
                 source = "blink.cmp",
-
             },
 
             --- WARNING: if you change cwd then this is likely broken
@@ -35,7 +34,7 @@ return {
             md_files = {
                 "AGENT.md",
             },
-            model = "llama.cpp/qwen3-coder:a3b",
+            model = "llama.cpp/unsloth/Qwen3-Coder-Next-GGUF:UD-Q6_K",
         })
 
         -- Create your own short cuts for the different types of actions

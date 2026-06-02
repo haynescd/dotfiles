@@ -4,26 +4,21 @@ return {
         dependencies = {
             "nvim-neotest/nvim-nio",
             "nvim-neotest/neotest-python",
-            "nvim-neotest/neotest-plenary",
-            "nvim-neotest/neotest-vim-test",
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
         },
-        event = "VeryLazy",
-        opts = { adapters = { "neotest-plenary", "neotest-python" } },
+        opts = { adapters = { "neotest-python" } },
         config = function()
             require("neotest").setup({
                 adapters = {
                     require("neotest-python")({
                         dap = { justMyCode = false },
                     }),
-                    require("neotest-plenary"),
                 },
             })
         end,
         -- stylua: ignore
         keys = {
-            { "<leader>t",  "",                                                                                 desc = "+test" },
             { "<leader>ta", function() require("neotest").run.attach() end,                                     desc = "Attach to Test (Neotest)" },
             { "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end,                      desc = "Run File (Neotest)" },
             { "<leader>tT", function() require("neotest").run.run(vim.uv.cwd()) end,                            desc = "Run All Test Files (Neotest)" },
