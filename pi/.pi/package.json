@@ -1,0 +1,19 @@
+{
+  "name": ".pi",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "agent/extensions/*"
+  ],
+  "scripts": {
+    "check": "npm run check --workspace=pi-save-md-extension ",
+    "test:cfpaste": "npm run test --workspace=pi-cfpaste-extension",
+    "test:save-md": "npm run test --workspace=pi-save-md-extension",
+    "test:worker-configuration-guard": "node --import tsx --test agent/extensions/tests/worker-configuration-guard.test.ts"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "^0.84.2",
+    "@earendil-works/pi-coding-agent": "^0.84.2",
+    "@earendil-works/pi-tui": "^0.84.2",
+  }
+}
