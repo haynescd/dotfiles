@@ -85,7 +85,7 @@ blue = "#8aadf4"
 [terminal]
 # Executable used for new interactive panes. Empty uses $SHELL, then /bin/sh.
 # Default: "".
-default_shell = "zsh"
+default_shell = ""
 
 # New-shell startup mode: "auto", "login", or "non_login". Auto uses login
 # shells on macOS and non-login behavior elsewhere.

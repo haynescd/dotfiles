@@ -1,1 +1,12 @@
 **/tmux/plugins
+/herdr/.config/herdr/.plugins.lock
+/herdr/.config/herdr/herdr-client.log
+/herdr/.config/herdr/herdr-server.log
+/herdr/.config/herdr/release-notes.json
+/herdr/.config/herdr/session-history.json
+/herdr/.config/herdr/session.json
+/pi/.pi/agent/auth.json
+/pi/.pi/agent/models-store.json
+/pi/.pi/agent/models.json
+/pi/.pi/agent/settings.json
+/pi/.pi/agent/sessions/--home-haynescd-code-dotfiles--/2026-08-22T17-21-00-389Z_01a02a7d-75e5-7856-bcee-b0b7666cb04d.jsonl
