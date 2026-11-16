@@ -7,6 +7,7 @@ return {
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
         },
+        enabled = false,
         opts = { adapters = { "neotest-python" } },
         config = function()
             require("neotest").setup({

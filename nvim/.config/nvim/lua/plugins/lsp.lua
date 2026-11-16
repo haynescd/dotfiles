@@ -20,6 +20,9 @@ return {
                 pyrefly = {},
                 ruff = {},
                 terraformls = {},
+                zls = {},
+                pyrefly = {},
+                jdtls = {},
             }
 
             local ensure_installed = vim.tbl_keys(servers or {})
