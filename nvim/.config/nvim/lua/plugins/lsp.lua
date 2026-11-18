@@ -17,7 +17,7 @@ return {
                 lua_ls = {},
                 gopls = {},
                 rust_analyzer = {},
-                basedpyright = {},
+                pyrefly = {},
                 ruff = {},
                 terraformls = {},
             }
@@ -46,14 +46,12 @@ return {
                     },
                 },
             })
-            vim.lsp.config("basedpyright", {
+            vim.lsp.config("rust_analyzer", {
                 settings = {
-                    basedpyright = {
-                        analysis = {
-                            autoImportCompletions = true,
-                            inlayHints = {
-                                callArgumentNames = true,
-                            },
+                    ["rust-analyzer"] = {
+                        checkOnSave = true,
+                        check = {
+                            command = "clippy",
                         },
                     },
                 },
