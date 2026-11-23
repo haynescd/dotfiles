@@ -215,7 +215,7 @@ next_workspace = "prefix+)"
 
 # Focus the next agent shown in the Agent panel.
 # Default: unset.
-# next_agent = ""
+next_agent = "prefix+shift+a"
 
 # Focus Agent panel entries by index 1-9.
 # Default: unset.

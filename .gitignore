@@ -13,3 +13,32 @@
 /pi/.pi/agent/sessions
 /pi/.pi/agent/skills/omarchy-app
 /pi/.pi/agent/themes/omarchy-system.json
+/.DS_Store
+/herdr/.config/herdr/session-snapshots
+/pi/.pi/agent/bin
+
+# pi agent runtime/state (keep settings + customization resources tracked)
+pi/.pi/agent/*
+pi/.pi/todos/*
+pi/.pi/.pi/todos/*
+pi/.pi/todos/*
+
+# pi MCP adapter runtime/secrets
+/pi/.pi/agent/mcp-oauth/
+/pi/.pi/agent/mcp-cache.json
+/pi/.pi/agent/mcp-npx-cache.json
+/pi/.pi/agent/mcp-auth.json
+/pi/.local/share/pi/mcp-auth.json
+
+# pi extensions node_modules
+/pi/.pi/agent/extensions/**/node_modules/
+
+
+!/pi/.pi/agent/tsconfig.json
+!/pi/.pi/agent/package.json
+!/pi/.pi/agent/cloak.json
+!/pi/.pi/agent/themes/
+!/pi/.pi/agent/themes/*.json
+!/pi/.pi/agent/extensions/
+!/pi/.pi/agent/extensions/**
+!/pi/.pi/agent/APPEND_SYSTEM.md
